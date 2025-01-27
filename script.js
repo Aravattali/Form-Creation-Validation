@@ -1,50 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Select form and feedback division
+    // Form Selection
     const form = document.getElementById("registration-form");
+
+    // Feedback Div Selection
     const feedbackDiv = document.getElementById("form-feedback");
 
-    // Form submission event listener
+    // Form Submission Event Listener
     form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent form submission to the server
+        event.preventDefault(); // Prevent default form submission
 
-        // Retrieve input values and trim whitespace
+        // Retrieve User Inputs
         const username = document.getElementById("username").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
 
-        // Initialize validation variables
+        // Initialize Validation Variables
         let isValid = true;
         const messages = [];
 
-        // Username validation
+        // Validation Logic
+
+        // Username Validation
         if (username.length < 3) {
             isValid = false;
             messages.push("Username must be at least 3 characters long.");
         }
 
-        // Email validation
+        // Email Validation
         if (!email.includes("@") || !email.includes(".")) {
             isValid = false;
             messages.push("Email must include both '@' and '.' characters.");
         }
 
-        // Password validation
+        // Password Validation
         if (password.length < 8) {
             isValid = false;
             messages.push("Password must be at least 8 characters long.");
         }
 
-        // Display feedback
-        feedbackDiv.style.display = "block"; // Ensure feedback div is visible
+        // Feedback Display Logic
+        feedbackDiv.style.display = "block"; // Make feedbackDiv visible
 
         if (isValid) {
             feedbackDiv.textContent = "Registration successful!";
-            feedbackDiv.style.color = "#4caf50"; // Success message color
-            feedbackDiv.style.backgroundColor = "#dff0d8"; // Success background
+            feedbackDiv.style.color = "#28a745"; // Green for success
         } else {
-            feedbackDiv.textContent = messages.join(" ");
-            feedbackDiv.style.color = "#d8000c"; // Error message color
-            feedbackDiv.style.backgroundColor = "#ffbaba"; // Error background
+            feedbackDiv.innerHTML = messages.join("<br>"); // Join messages with <br>
+            feedbackDiv.style.color = "#dc3545"; // Red for errors
         }
     });
 });
