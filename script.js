@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Form Submission Event Listener
     form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault(); // Prevent form submission
 
         // Retrieve User Inputs
         const username = document.getElementById("username").value.trim();
@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const messages = [];
 
         // Validation Logic
-
         // Username Validation
         if (username.length < 3) {
             isValid = false;
